@@ -30,7 +30,7 @@ const NewsByFilters = () => {
 		}
 	}
 
-	const handlePrevPage = () => {
+	const handlePreviousPage = () => {
 		if (filters.page_number > 1) {
 			changeFilter('page_number', filters.page_number - 1)
 		}
@@ -47,7 +47,7 @@ const NewsByFilters = () => {
 			<PaginationWrapper
 				top
 				bottom
-				handlePrevPage={handlePrevPage}
+				handlePreviousPage={handlePreviousPage}
 				handleNextPage={handleNextPage}
 				handlePageClick={handlePageClick}
 				totalPages={TOTAL_PAGES}

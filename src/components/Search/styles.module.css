@@ -11,3 +11,11 @@
 	padding: 10px;
 	width: 100%;
 }
+
+.light {
+	background-color: white;
+}
+
+.dark {
+	background-color: #23272f;
+}

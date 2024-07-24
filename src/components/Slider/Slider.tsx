@@ -4,6 +4,7 @@ import styles from './styles.module.css'
 interface Props {
 	children: React.ReactElement
 	step?: number
+	isDark: boolean
 }
 
 const Slider = ({ children, step = 150 }: Props) => {
@@ -16,8 +17,8 @@ const Slider = ({ children, step = 150 }: Props) => {
 
 	const scrollRight = () => {
 		if (!sliderRef.current) return
-		sliderRef.current.scrollRight += step
-		console.log(sliderRef.scrollRight)
+		// sliderRef.current.scrollRight += step
+		// console.log(sliderRef.scrollRight)
 	}
 
 	return (
