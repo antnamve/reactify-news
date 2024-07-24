@@ -24,14 +24,9 @@ export const Main = () => {
 
 	return (
 		<main className={styles.main}>
-			<LatestNews isLoading={isLoading} banners={data && data.news} />
+			<LatestNews />
 
-			<NewsByFilters
-				news={data?.news}
-				isLoading={isLoading}
-				filters={filters}
-				changeFilter={changeFilter}
-			/>
+			<NewsByFilters />
 		</main>
 	)
 }
