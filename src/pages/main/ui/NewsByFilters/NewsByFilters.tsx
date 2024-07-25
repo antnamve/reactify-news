@@ -1,35 +1,34 @@
-import { useAppDispatch, useAppSelector } from '@/app/appStore'
-import { useGetCategoriesQuery } from '@/entities/category/api/categoriesApi'
-import { useGetNewsQuery } from '@/entities/news/api/newsApi'
-import { useDebounce } from '@/shared/hooks/useDebounce'
-import NewsFilters from '@/widgets/news/ui/NewsFilters/NewsFilters'
-import NewsListWithPagination from '../NewsListWithPagination/NewsListWithPagination'
-import styles from './styles.module.css'
+import { useAppSelector } from "@/app/appStore";
+import { useDebounce } from "@/shared/hooks/useDebounce";
+import { useGetNewsQuery } from "@/entities/news/api/newsApi";
+import styles from "./styles.module.css";
+import { useGetCategoriesQuery } from "@/entities/category/api/categoriesApi";
+import { NewsFilters } from "@/widgets/news";
+import NewsListWithPagination from "../NewsListWithPagination/NewsListWithPagination";
 
 const NewsByFilters = () => {
-	const filters = useAppSelector(state => state.news.filters)
-	const news = useAppDispatch(state => state.news.news)
+  const filters = useAppSelector((state) => state.news.filters);
+  const news = useAppSelector((state) => state.news.news);
 
-	const debouncedKeywords = useDebounce(filters.keywords, 1500)
+  const debouncedKeywords = useDebounce(filters.keywords, 1500);
 
-	const { isLoading } = useGetNewsQuery({
-		...filters,
-		keywords: debouncedKeywords,
-	})
+  const { isLoading } = useGetNewsQuery({
+    ...filters,
+    keywords: debouncedKeywords,
+  });
+  const { data } = useGetCategoriesQuery(null);
 
-	const { data } = useGetCategoriesQuery(null)
+  return (
+    <section className={styles.section}>
+      <NewsFilters filters={filters} categories={data?.categories || []} />
 
-	return (
-		<section className={styles.section}>
-			<NewsFilters filters={filters} categories={data?.categories || []} />
+      <NewsListWithPagination
+        isLoading={isLoading}
+        news={news}
+        filters={filters}
+      />
+    </section>
+  );
+};
 
-			<NewsListWithPagination
-				isLoading={isLoading}
-				news={news}
-				filters={filters}
-			/>
-		</section>
-	)
-}
-
-export default NewsByFilters
+export default NewsByFilters;

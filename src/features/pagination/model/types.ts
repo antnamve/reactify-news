@@ -1,7 +1,7 @@
 export interface IPaginationProps {
-	totalPages: number
-	handlePreviousPage: () => void
-	handleNextPage: () => void
-	handlePageClick: (page: number) => void
-	currentPage: number
+  totalPages: number;
+  handlePreviousPage: () => void;
+  handleNextPage: () => void;
+  handlePageClick: (page: number) => void;
+  currentPage: number;
 }

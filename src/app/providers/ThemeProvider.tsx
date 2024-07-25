@@ -1,36 +1,36 @@
-import { ReactNode, createContext, useContext, useState } from 'react'
+import { ReactNode, createContext, useContext, useState } from "react";
 
 interface IThemeContext {
-	isDark: boolean
-	toggleTheme: () => void
+  isDark: boolean;
+  toggleTheme: () => void;
 }
 
-export const ThemeContext = createContext<IThemeContext | undefined>(undefined)
+export const ThemeContext = createContext<IThemeContext | undefined>(undefined);
 
 export const useTheme = () => {
-	const context = useContext(ThemeContext)
+  const context = useContext(ThemeContext);
 
-	if (!context) {
-		throw new Error('context error')
-	}
+  if (!context) {
+    throw new Error("context error");
+  }
 
-	return context
-}
+  return context;
+};
 
 interface ThemeProviderProps {
-	children: ReactNode
+  children: ReactNode;
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-	const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(false);
 
-	const toggleTheme = () => {
-		setIsDark(prev => !prev)
-	}
+  const toggleTheme = () => {
+    setIsDark((prev) => !prev);
+  };
 
-	return (
-		<ThemeContext.Provider value={(isDark, toggleTheme)}>
-			{children}
-		</ThemeContext.Provider>
-	)
-}
+  return (
+    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

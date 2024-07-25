@@ -1,26 +1,25 @@
-import { IPaginationProps } from '../../../shared/interfaces'
-import Pagination from '../PaginationButtons/PaginationButtons'
+import { IPaginationProps } from "../../model/types";
+import PaginationButtons from "../PaginationButtons/PaginationButtons";
 
 interface Props {
-	top?: boolean
-	bottom?: boolean
-	children: React.ReactNode
+  children: React.ReactNode;
+  top?: boolean;
+  bottom?: boolean;
 }
 
-const PaginationWrapper = ({
-	top,
-	bottom,
-	children,
-	...paginationProps
+const Pagination = ({
+  top,
+  bottom,
+  children,
+  ...paginationProps
 }: Props & IPaginationProps) => {
-	return (
-		<>
-			{top && <Pagination {...paginationProps} />}
+  return (
+    <>
+      {top && <PaginationButtons {...paginationProps} />}
+      {children}
+      {bottom && <PaginationButtons {...paginationProps} />}
+    </>
+  );
+};
 
-			{children}
-			{bottom && <Pagination {...paginationProps} />}
-		</>
-	)
-}
-
-export default PaginationWrapper
+export default Pagination;
