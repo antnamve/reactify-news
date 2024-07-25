@@ -1,0 +1,33 @@
+.card {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+}
+
+.banner {
+	flex-direction: column;
+}
+
+.title {
+	font-size: 14px;
+}
+
+.extra {
+	color: #6c7072;
+	font-size: 12px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.wrapper {
+	flex-shrink: 0;
+	background-position: center;
+	background-size: cover;
+	background-color: #f2f4f5;
+	width: 64px;
+	height: 64px;
+}
